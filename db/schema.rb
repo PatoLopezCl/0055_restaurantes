@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_014729) do
+ActiveRecord::Schema.define(version: 2021_10_21_234847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "puntajes", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "restaurantes", force: :cascade do |t|
     t.string "nombre"
@@ -23,8 +29,21 @@ ActiveRecord::Schema.define(version: 2021_10_16_014729) do
     t.index ["tipos_comidas_id"], name: "index_restaurantes_on_tipos_comidas_id"
   end
 
+  create_table "tipo_comidas", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tipos_comidas", force: :cascade do |t|
     t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "nombre_usuario"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
